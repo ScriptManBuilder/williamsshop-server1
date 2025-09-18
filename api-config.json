@@ -1,0 +1,147 @@
+{
+  "apiConfig": {
+    "baseURL": "http://localhost:3001",
+    "timeout": 10000,
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "endpoints": {
+    "public": {
+      "health": {
+        "method": "GET",
+        "url": "/health",
+        "description": "Проверка состояния сервера"
+      },
+      "signup": {
+        "method": "POST",
+        "url": "/auth/signup",
+        "description": "Регистрация пользователя",
+        "body": {
+          "email": "string (required)",
+          "password": "string (required, min 5 chars)",
+          "firstName": "string (optional)",
+          "lastName": "string (optional)"
+        },
+        "response": {
+          "access_token": "string",
+          "user": "object"
+        }
+      },
+      "signin": {
+        "method": "POST",
+        "url": "/auth/signin",
+        "description": "Авторизация пользователя",
+        "body": {
+          "email": "string (required)",
+          "password": "string (required)"
+        },
+        "response": {
+          "access_token": "string",
+          "user": "object"
+        }
+      }
+    },
+    "protected": {
+      "profile": {
+        "method": "GET",
+        "url": "/auth/profile",
+        "description": "Получить профиль текущего пользователя",
+        "headers": {
+          "Authorization": "Bearer {token}"
+        }
+      },
+      "testRoute": {
+        "method": "GET",
+        "url": "/auth/test",
+        "description": "Тестовый защищенный маршрут",
+        "headers": {
+          "Authorization": "Bearer {token}"
+        }
+      },
+      "users": {
+        "getAll": {
+          "method": "GET",
+          "url": "/users",
+          "description": "Получить всех пользователей"
+        },
+        "getById": {
+          "method": "GET",
+          "url": "/users/{id}",
+          "description": "Получить пользователя по ID"
+        },
+        "create": {
+          "method": "POST",
+          "url": "/users",
+          "description": "Создать пользователя"
+        },
+        "update": {
+          "method": "PATCH",
+          "url": "/users/{id}",
+          "description": "Обновить пользователя"
+        },
+        "delete": {
+          "method": "DELETE",
+          "url": "/users/{id}",
+          "description": "Удалить пользователя"
+        }
+      }
+    }
+  },
+  "errorCodes": {
+    "400": "Bad Request - Неверные данные",
+    "401": "Unauthorized - Не авторизован",
+    "403": "Forbidden - Доступ запрещен",
+    "404": "Not Found - Не найдено",
+    "409": "Conflict - Конфликт (email уже существует)",
+    "500": "Internal Server Error - Ошибка сервера"
+  },
+  "examples": {
+    "signup": {
+      "request": {
+        "url": "http://localhost:3001/auth/signup",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "email": "user@example.com",
+          "password": "pass123",
+          "firstName": "John",
+          "lastName": "Doe"
+        }
+      },
+      "response": {
+        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+        "user": {
+          "id": 1,
+          "email": "user@example.com",
+          "firstName": "John",
+          "lastName": "Doe",
+          "createdAt": "2025-09-14T15:30:00.000Z",
+          "updatedAt": "2025-09-14T15:30:00.000Z"
+        }
+      }
+    },
+    "signin": {
+      "request": {
+        "url": "http://localhost:3001/auth/signin",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "email": "user@example.com",
+          "password": "pass123"
+        }
+      }
+    },
+    "protectedRequest": {
+      "url": "http://localhost:3001/auth/profile",
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer {your-jwt-token-here}"
+      }
+    }
+  }
+}
