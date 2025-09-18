@@ -15,6 +15,7 @@ async function bootstrap() {
         'https://williams-collection-new.com', 
         'https://api.williams-collection-new.com',
         'https://williamsshop-server1.onrender.com',
+        'https://williams-shop-client1.vercel.app',
         'http://localhost:3000',
         'http://localhost:3002'
       ]; // fallback для разработки
