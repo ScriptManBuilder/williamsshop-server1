@@ -14,7 +14,7 @@ async function bootstrap() {
         'https://www.williams-collection-new.com',
         'https://williams-collection-new.com', 
         'https://api.williams-collection-new.com',
-        'https://williams-collection-server-new.onrender.com',
+        'https://williamsshop-server1.onrender.com',
         'http://localhost:3000',
         'http://localhost:3002'
       ]; // fallback для разработки
