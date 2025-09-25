@@ -8,12 +8,8 @@ async function bootstrap() {
   const allowedOrigins = process.env.ALLOWED_ORIGINS 
     ? process.env.ALLOWED_ORIGINS.split(',')
     : [
-        'https://willcol.com',
-        'https://www.willcol.com',
-        'https://api.willcol.com',
-        'https://www.williams-collection-new.com',
-        'https://williams-collection-new.com', 
-        'https://api.williams-collection-new.com',
+        'willcol-ai.com',
+        'https://willcol-ai.com',       
         'https://williamsshop-server1.onrender.com',
         'https://williams-shop-client1.vercel.app',
         'http://localhost:3000',
