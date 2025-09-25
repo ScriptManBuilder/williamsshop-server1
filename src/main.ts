@@ -8,6 +8,7 @@ async function bootstrap() {
   const allowedOrigins = process.env.ALLOWED_ORIGINS 
     ? process.env.ALLOWED_ORIGINS.split(',')
     : [
+        'willcol-ai.com',
         'https://willcol-ai.com',
         'https://www.willcol-ai.com',
         'https://willcol.com',
